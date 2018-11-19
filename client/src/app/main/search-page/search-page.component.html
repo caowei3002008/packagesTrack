@@ -1,0 +1,27 @@
+<div>
+  <form [formGroup] = "form" (submit)="onSubmit()">
+
+    <input type="text" formControlName="phone_number" placeholder="手机号码">
+    <!--<h3 *ngIf="form.get('phone_number').invalid">请输入11位数电话号码</h3>-->
+    <button>搜索</button>
+
+
+  </form>
+</div>
+
+<div *ngIf="customer">
+  <!--{{customer | json}}-->
+  <ul *ngFor="let person of customer">
+    <li><p>{{person.trakcingNumber}} | {{person.phoneNumber}}</p>
+        <p><button (click)="onClick(person.trakcingNumber)">Track</button> </p>
+    </li>
+  </ul>
+</div>
+
+<!--<div *ngIf="packageDetails">-->
+  <!--{{packageDetails.data}}-->
+<!--</div>-->
+
+
+<div *ngIf="packageDetails" [innerHTML]="packageDetails.data"></div>
+
