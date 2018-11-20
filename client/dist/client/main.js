@@ -106,11 +106,11 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 var routes = [
-    {
-        path: "",
-        pathMatch: "full",
-        redirectTo: "/search"
-    },
+    // {
+    //   path:"",
+    //   pathMatch: "full",
+    //   redirectTo: "/search"
+    // },
     {
         path: "search",
         component: _main_search_page_search_page_component__WEBPACK_IMPORTED_MODULE_2__["SearchPageComponent"]
@@ -154,7 +154,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!--The content below is only a placeholder and can be replaced.-->\n<div style=\"text-align:center\">\n  <h1>\n    快递查询系统\n  </h1>\n</div>\n\n\n<router-outlet></router-outlet>\n"
+module.exports = "<!--The content below is only a placeholder and can be replaced.-->\n<div style=\"text-align:center\">\n  <h1>\n    楠锦麻麻美代快递查询系统\n  </h1>\n</div>\n\n\n<router-outlet></router-outlet>\n"
 
 /***/ }),
 
