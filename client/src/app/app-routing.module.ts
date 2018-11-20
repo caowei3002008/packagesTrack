@@ -10,13 +10,13 @@ const routes: Routes = [
   //   redirectTo: "/search"
   // },
   {
-    path:"search",
+    path:"/",
     component:SearchPageComponent
-  },
-  {
-    path:"results",
-    component:TrackingResultsComponent
   }
+  // {
+  //   path:"results",
+  //   component:TrackingResultsComponent
+  // }
 ];
 
 @NgModule({
