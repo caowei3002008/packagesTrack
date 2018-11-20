@@ -10,7 +10,8 @@ const routes: Routes = [
   //   redirectTo: "/search"
   // },
   {
-    path:"/",
+    path:"",
+    pathMatch: "full",
     component:SearchPageComponent
   }
   // {
