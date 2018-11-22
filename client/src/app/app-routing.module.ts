@@ -4,20 +4,13 @@ import {SearchPageComponent} from "./main/search-page/search-page.component";
 import {TrackingResultsComponent} from "./main/tracking-results/tracking-results.component";
 
 const routes: Routes = [
-  // {
-  //   path:"",
-  //   pathMatch: "full",
-  //   redirectTo: "/search"
-  // },
+
   {
     path:"",
     pathMatch: "full",
     component:SearchPageComponent
   }
-  // {
-  //   path:"results",
-  //   component:TrackingResultsComponent
-  // }
+
 ];
 
 @NgModule({

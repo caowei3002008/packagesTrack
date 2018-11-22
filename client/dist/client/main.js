@@ -94,7 +94,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _main_search_page_search_page_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./main/search-page/search-page.component */ "./src/app/main/search-page/search-page.component.ts");
-/* harmony import */ var _main_tracking_results_tracking_results_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./main/tracking-results/tracking-results.component */ "./src/app/main/tracking-results/tracking-results.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -104,20 +103,11 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 
-
 var routes = [
-    // {
-    //   path:"",
-    //   pathMatch: "full",
-    //   redirectTo: "/search"
-    // },
     {
-        path: "search",
+        path: "",
+        pathMatch: "full",
         component: _main_search_page_search_page_component__WEBPACK_IMPORTED_MODULE_2__["SearchPageComponent"]
-    },
-    {
-        path: "results",
-        component: _main_tracking_results_tracking_results_component__WEBPACK_IMPORTED_MODULE_3__["TrackingResultsComponent"]
     }
 ];
 var AppRoutingModule = /** @class */ (function () {
