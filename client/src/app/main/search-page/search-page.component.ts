@@ -17,11 +17,20 @@ export class SearchPageComponent implements OnInit {
   length = 0;
   customer:any;
   packageDetails: any;
+  flag = true;
+  columnsToDisplay = ['trakcingNumber','phoneNumber'];
+  expandedElement: Customer;
+  mode = 'determinate';
+  dataSource: any;
+
 
   ngOnInit() {
     this.form = new FormGroup({
       phone_number: new FormControl(null, {
-        validators: [Validators.required]
+        validators: [Validators.required,
+        Validators.minLength(11)
+          // Validators.maxLength(11)
+        ]
       })
     });
 
@@ -39,6 +48,7 @@ export class SearchPageComponent implements OnInit {
     });
 
     this.form.reset();
+    this.flag = false;
   }
 
   onClick(trackingNumber:string){
@@ -50,15 +60,23 @@ export class SearchPageComponent implements OnInit {
 
   getAllCustomers(){
     this.authSearch.getAllCustomer().subscribe(customers => {
-      this.customers = customers;
-      for(let customer of this.customers){
-        this.authSearch.getPackageDetails(customer.trackingNumber).subscribe(packageDetails => {
-          this.packageDetails = packageDetails;
-          this.authSearch.updateEachCustomer(customer.trackingNumber, this.packageDetails);
-        });
-
+      if(customers){
+        this.customers = customers;
+        this.dataSource = this.customers;
+        // for(let customer of this.customers){
+        //   this.authSearch.getPackageDetails(customer.trackingNumber).subscribe(packageDetails => {
+        //     this.packageDetails = packageDetails;
+        //     this.authSearch.updateEachCustomer(customer.trackingNumber, this.packageDetails);
+        //   });
+        //
+        // }
       }
+
     })
   }
+
+  // get phone_number() {
+  //   return this.form.get("phone_number");
+  // }
 
 }

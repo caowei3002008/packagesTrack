@@ -1,0 +1,29 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport="false"
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="!(isHandset$ | async)">
+    <mat-toolbar>菜单</mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item href="/">跟踪包裹</a>
+      <a mat-list-item href="#">调试中(查询包裹信息)</a>
+      <a mat-list-item href="#">调试中(查询消费积分）</a>
+      <a mat-list-item href="#">调试中(兑换消费积分)</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span>楠锦麻麻美代</span>
+    </mat-toolbar>
+    <ng-content ></ng-content>
+    <!-- Add Content Here -->
+  </mat-sidenav-content>
+</mat-sidenav-container>
