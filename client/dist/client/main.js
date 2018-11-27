@@ -416,7 +416,7 @@ module.exports = ".phoneNumber_box {\n\n  position: absolute;\n  left: 25px;\n  
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n\n<mat-card class=\"phoneNumber_box\" *ngIf=\"flag\">\n  <h3>输入手机号码查询包裹信息</h3>\n  <form [formGroup] = \"form\" (submit)=\"onSubmit()\">\n    <p>\n      <mat-form-field>\n        <input matInput type=\"phone\" formControlName=\"phone_number\" placeholder=\"手机号码\">\n        <mat-error *ngIf=\"form.get('phone_number').invalid\">请输入正确的11位手机号码</mat-error>\n\n      </mat-form-field>\n    </p>\n    <button mat-raised-button color=\"accent\" type=\"submit\">查找</button>\n  </form>\n</mat-card>\n\n\n<div *ngIf=\"customer\">\n\n  <ul *ngFor=\"let person of customer\">\n    <li><p>{{person.trakcingNumber}} | {{person.phoneNumber}}</p>\n      <p><button (click)=\"onClick(person.trakcingNumber)\">追踪包裹</button> </p>\n    </li>\n  </ul>\n</div>\n\n\n<!--<mat-card>-->\n<!--<table  mat-table-->\n       <!--[dataSource] = \"customer\"-->\n        <!--multiTemplateDataRows-->\n       <!--class = \"mat-elevation-z8\">-->\n  <!--<ng-container matColumnDef=\"{{column}}\"-->\n                <!--*ngFor=\"let column of columnsToDisplay\">-->\n    <!--<th mat-header-cell *matHeaderCellDef> {{column}} </th>-->\n    <!--<td mat-cell *matCellDef=\"let element\"> {{element[column]}} </td>-->\n  <!--</ng-container>-->\n\n  <!--<ng-container matColumnDef=\"expandedDetail\" *matCellDef=\"let element\" (click)=\"onClick(element.trakcingNumber)\">-->\n    <!--<td mat-cell *matCellDef=\"let element\" [attr.colspan]=\"columnsToDisplay.length\">-->\n      <!--<div class=\"example-element-detail\"-->\n           <!--[@detailExpand]=\"element == expandedElement ? 'expanded' : 'collapsed'\">-->\n\n\n        <!--<div class=\"example-element-description\">-->\n          <!--<div *ngIf=\"packageDetails\" [innerHTML]=\"packageDetails.data\"></div>-->\n          <!--</div>-->\n\n\n\n        <!--</div>-->\n\n\n\n\n\n    <!--</td>-->\n  <!--</ng-container>-->\n\n  <!--<tr mat-header-row *matHeaderRowDef=\"columnsToDisplay\"></tr>-->\n  <!--<tr mat-row *matRowDef=\"let element; columns: columnsToDisplay;\"-->\n      <!--class=\"example-element-row\"-->\n      <!--[class.example-expanded-row]=\"expandedElement === element\"-->\n      <!--(click)=\"expandedElement = element\">-->\n  <!--</tr>-->\n  <!--<tr mat-row *matRowDef=\"let row; columns: ['expandedDetail']\" class=\"example-detail-row\"></tr>-->\n\n\n\n\n<!--</table>-->\n<!--</mat-card>-->\n\n\n<div *ngIf=\"packageDetails\" [innerHTML]=\"packageDetails.data\"></div>\n"
+module.exports = "\n\n<mat-card class=\"phoneNumber_box\" *ngIf=\"flag\">\n  <h3>输入手机号码查询包裹信息</h3>\n  <form [formGroup] = \"form\" (submit)=\"onSubmit()\">\n    <p>\n      <mat-form-field>\n        <input matInput type=\"phone\" formControlName=\"phone_number\" placeholder=\"手机号码\">\n        <mat-error *ngIf=\"form.get('phone_number').invalid\">请输入正确的11位手机号码</mat-error>\n\n      </mat-form-field>\n    </p>\n    <button mat-raised-button color=\"accent\" type=\"submit\">查找</button>\n  </form>\n</mat-card>\n\n\n<!--<div *ngIf=\"customer\">-->\n\n  <!--<ul *ngFor=\"let person of customer\">-->\n    <!--<li><p>{{person.trakcingNumber}} | {{person.phoneNumber}}</p>-->\n      <!--<p><button (click)=\"onClick(person.trakcingNumber)\">Track</button> </p>-->\n    <!--</li>-->\n  <!--</ul>-->\n<!--</div>-->\n\n\n<mat-card *ngIf=\"!flag\">\n  <mat-spinner *ngIf=\"isLoading\"></mat-spinner>\n<table  mat-table\n       [dataSource] = \"customer\"\n        multiTemplateDataRows\n       class = \"mat-elevation-z8\">\n  <ng-container matColumnDef=\"{{column}}\"\n                *ngFor=\"let column of columnsToDisplay\">\n    <th mat-header-cell *matHeaderCellDef> {{column}} </th>\n\n\n    <td mat-cell *matCellDef=\"let element\"> {{element[column]}} </td>\n\n\n\n  </ng-container>\n\n  <ng-container matColumnDef=\"expandedDetail\" >\n    <td mat-cell *matCellDef=\"let element\" [attr.colspan]=\"columnsToDisplay.length\" >\n      <div class=\"example-element-detail\"\n           [@detailExpand]=\"element == expandedElement ? 'expanded' : 'collapsed'\">\n\n\n        <div class=\"example-element-description\">\n          <div  [innerHTML]=\"element['data']\"></div>\n\n          <!--<div >{{element['data'] | json}}</div>-->\n          </div>\n\n\n\n        </div>\n\n\n\n\n\n    </td>\n  </ng-container>\n\n  <tr mat-header-row *matHeaderRowDef=\"columnsToDisplay\"></tr>\n  <tr mat-row *matRowDef=\"let element; columns: columnsToDisplay;\"\n      class=\"example-element-row\"\n      [class.example-expanded-row]=\"expandedElement === element\"\n      (click)=\"expandedElement = element\">\n  </tr>\n  <tr mat-row *matRowDef=\"let row; columns: ['expandedDetail']\" class=\"example-detail-row\"></tr>\n\n\n\n\n</table>\n</mat-card>\n\n\n<!--<div *ngIf=\"packageDetails\" [innerHTML]=\"packageDetails.data\"></div>-->\n"
 
 /***/ }),
 
@@ -433,6 +433,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
 /* harmony import */ var _api_service_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../api-service.service */ "./src/app/api-service.service.ts");
+/* harmony import */ var _angular_animations__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/animations */ "./node_modules/@angular/animations/fesm5/animations.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -445,6 +446,7 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
 var SearchPageComponent = /** @class */ (function () {
     function SearchPageComponent(authSearch) {
         this.authSearch = authSearch;
@@ -453,6 +455,7 @@ var SearchPageComponent = /** @class */ (function () {
         this.flag = true;
         this.columnsToDisplay = ['trakcingNumber', 'phoneNumber'];
         this.mode = 'determinate';
+        this.isLoading = false;
     }
     SearchPageComponent.prototype.ngOnInit = function () {
         this.form = new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormGroup"]({
@@ -473,6 +476,20 @@ var SearchPageComponent = /** @class */ (function () {
         this.authSearch.getCustomer(this.form.value.phone_number).subscribe(function (customer) {
             console.log(customer);
             _this.customer = customer;
+            var _loop_1 = function (customer_1) {
+                console.log("----", customer_1);
+                console.log(customer_1.trakcingNumber);
+                _this.authSearch.getPackageDetails(customer_1.trakcingNumber).subscribe(function (packageDetails) {
+                    customer_1.data = packageDetails.data;
+                    // this.packageDetails = packageDetails;
+                    // this.authSearch.updateEachCustomer(customer.trackingNumber, this.packageDetails);
+                });
+            };
+            for (var _i = 0, _a = _this.customer; _i < _a.length; _i++) {
+                var customer_1 = _a[_i];
+                _loop_1(customer_1);
+            }
+            console.log(customer);
         });
         this.form.reset();
         this.flag = false;
@@ -488,14 +505,17 @@ var SearchPageComponent = /** @class */ (function () {
         this.authSearch.getAllCustomer().subscribe(function (customers) {
             if (customers) {
                 _this.customers = customers;
-                _this.dataSource = _this.customers;
-                // for(let customer of this.customers){
-                //   this.authSearch.getPackageDetails(customer.trackingNumber).subscribe(packageDetails => {
-                //     this.packageDetails = packageDetails;
-                //     this.authSearch.updateEachCustomer(customer.trackingNumber, this.packageDetails);
-                //   });
-                //
-                // }
+                var _loop_2 = function (customer) {
+                    _this.authSearch.getPackageDetails(customer.trackingNumber).subscribe(function (packageDetails) {
+                        _this.packageDetails = packageDetails;
+                        _this.authSearch.updateEachCustomer(customer.trackingNumber, _this.packageDetails);
+                    });
+                };
+                // this.dataSource = this.customers;
+                for (var _i = 0, _a = _this.customers; _i < _a.length; _i++) {
+                    var customer = _a[_i];
+                    _loop_2(customer);
+                }
             }
         });
     };
@@ -503,7 +523,14 @@ var SearchPageComponent = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-search-page',
             template: __webpack_require__(/*! ./search-page.component.html */ "./src/app/main/search-page/search-page.component.html"),
-            styles: [__webpack_require__(/*! ./search-page.component.css */ "./src/app/main/search-page/search-page.component.css")]
+            styles: [__webpack_require__(/*! ./search-page.component.css */ "./src/app/main/search-page/search-page.component.css")],
+            animations: [
+                Object(_angular_animations__WEBPACK_IMPORTED_MODULE_3__["trigger"])('detailExpand', [
+                    Object(_angular_animations__WEBPACK_IMPORTED_MODULE_3__["state"])('collapsed', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_3__["style"])({ height: '0px', minHeight: '0', display: 'none' })),
+                    Object(_angular_animations__WEBPACK_IMPORTED_MODULE_3__["state"])('expanded', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_3__["style"])({ height: '*' })),
+                    Object(_angular_animations__WEBPACK_IMPORTED_MODULE_3__["transition"])('expanded <=> collapsed', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_3__["animate"])('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
+                ]),
+            ],
         }),
         __metadata("design:paramtypes", [_api_service_service__WEBPACK_IMPORTED_MODULE_2__["ApiServiceService"]])
     ], SearchPageComponent);

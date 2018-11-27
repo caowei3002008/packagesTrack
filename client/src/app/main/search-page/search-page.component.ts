@@ -3,11 +3,20 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {ApiServiceService} from "../../api-service.service";
 import {Customer} from "../customer.model";
 import {forEach} from "@angular/router/src/utils/collection";
+import {animate, state, style, transition, trigger} from '@angular/animations';
+
 
 @Component({
   selector: 'app-search-page',
   templateUrl: './search-page.component.html',
-  styleUrls: ['./search-page.component.css']
+  styleUrls: ['./search-page.component.css'],
+  animations: [
+    trigger('detailExpand', [
+      state('collapsed', style({height: '0px', minHeight: '0', display: 'none'})),
+      state('expanded', style({height: '*'})),
+      transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
+    ]),
+  ],
 })
 export class SearchPageComponent implements OnInit {
 
@@ -22,6 +31,7 @@ export class SearchPageComponent implements OnInit {
   expandedElement: Customer;
   mode = 'determinate';
   dataSource: any;
+  isLoading = false;
 
 
   ngOnInit() {
@@ -45,6 +55,20 @@ export class SearchPageComponent implements OnInit {
     this.authSearch.getCustomer(this.form.value.phone_number).subscribe(customer =>{
       console.log(customer);
       this.customer = customer;
+
+      for(let customer of this.customer){
+        console.log("----",customer);
+        console.log(customer.trakcingNumber);
+        this.authSearch.getPackageDetails(customer.trakcingNumber).subscribe(packageDetails => {
+          customer.data = packageDetails.data;
+          // this.packageDetails = packageDetails;
+          // this.authSearch.updateEachCustomer(customer.trackingNumber, this.packageDetails);
+        });
+
+      }
+      console.log(customer);
+
+
     });
 
     this.form.reset();
@@ -62,14 +86,14 @@ export class SearchPageComponent implements OnInit {
     this.authSearch.getAllCustomer().subscribe(customers => {
       if(customers){
         this.customers = customers;
-        this.dataSource = this.customers;
-        // for(let customer of this.customers){
-        //   this.authSearch.getPackageDetails(customer.trackingNumber).subscribe(packageDetails => {
-        //     this.packageDetails = packageDetails;
-        //     this.authSearch.updateEachCustomer(customer.trackingNumber, this.packageDetails);
-        //   });
-        //
-        // }
+        // this.dataSource = this.customers;
+        for(let customer of this.customers){
+          this.authSearch.getPackageDetails(customer.trackingNumber).subscribe(packageDetails => {
+            this.packageDetails = packageDetails;
+            this.authSearch.updateEachCustomer(customer.trackingNumber, this.packageDetails);
+          });
+
+        }
       }
 
     })
