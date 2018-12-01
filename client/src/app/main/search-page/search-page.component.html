@@ -49,9 +49,38 @@
 
 
         <div class="example-element-description">
+
+
+
+          <!--<div *ngIf="element['packageData']">{{element['packageData'] | json}}</div>-->
+
+
+
+          <div *ngIf="element['packageData']">
+              <h3>收件人：{{element['packageData'].addr.Name}}</h3>
+              <h3>电话: {{element['packageData'].addr.Tel}}</h3>
+              <h3 *ngIf="element['packageData'].addr.District != '无'">地址: {{element['packageData'].addr.Province}} {{element['packageData'].addr.City}}{{element['packageData'].addr.District}}{{element['packageData'].addr.Addr}}</h3>
+              <h3 *ngIf="element['packageData'].addr.District === '无'">地址: {{element['packageData'].addr.Province}} {{element['packageData'].addr.City}}{{element['packageData'].addr.Addr}}</h3>
+              <h3>包裹明细：</h3>
+              <table class="table1">
+                <tr>
+                  <th>物品</th>
+                  <th>数量</th>
+                </tr>
+                <tr *ngFor="let item of element['packageData'].list">
+                  <td>{{item.Name}}</td>
+                  <td>{{item.Quantity}}</td>
+                </tr>
+              </table>
+
+
+          </div>
+
+
+
           <div  [innerHTML]="element['data']"></div>
 
-          <!--<div >{{element['data'] | json}}</div>-->
+
           </div>
 
 

@@ -61,9 +61,15 @@ export class SearchPageComponent implements OnInit {
         console.log(customer.trakcingNumber);
         this.authSearch.getPackageDetails(customer.trakcingNumber).subscribe(packageDetails => {
           customer.data = packageDetails.data;
-          // this.packageDetails = packageDetails;
-          // this.authSearch.updateEachCustomer(customer.trackingNumber, this.packageDetails);
-        });
+
+        }
+
+        );
+        if(customer.package_id){
+          this.authSearch.getPackageData(customer.package_id).subscribe(packageData => {
+            customer.packageData = packageData.data;
+          })
+        }
 
       }
       console.log(customer);

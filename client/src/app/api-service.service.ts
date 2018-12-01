@@ -18,6 +18,10 @@ export class ApiServiceService {
     return this.http.get("/api/packages_tracking/"+tracking_number);
   }
 
+  getPackageData(id): Observable<any>{
+    return this.http.get("/api/packages_data_tracking/"+id);
+  }
+
   getAllCustomer(): Observable<any>{
     return this.http.get("/api/get_all_customers");
   }

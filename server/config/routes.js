@@ -39,6 +39,23 @@ router.get("/packages_tracking/:trackingNumber", (req,res,next) => {
     })
 });
 
+router.get("/packages_data_tracking/:id", (req,res,next) => {
+    console.log(req.params.id);
+    request.post({
+        "headers": {'content-type' : 'application/x-www-form-urlencoded'},
+        "url":'http://www.haitaousa.com/Package/ProductDetail?id='+req.params.id
+    },(err,response,body) => {
+        console.log(req.params.id);
+        if(err){
+            res.status(400).json(err);
+        }
+        body = JSON.parse(body);
+        console.log(body);
+        res.status(200).json(body);
+    })
+
+})
+
 router.get("/get_all_customers", (req,res,next) => {
     Customer.find().then(customers =>{
         res.status(200).json(customers);
